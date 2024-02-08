@@ -15,7 +15,7 @@
                 if(isset($_SESSION["panier"])){
                     foreach($_SESSION["panier"] as $val){
                         $data = explode("|",$val);
-                        $total += $data[2];
+                        $total += (int)$data[2];
                         ?>
                         <tr>
                             <td><?=$data[0]?></td>
