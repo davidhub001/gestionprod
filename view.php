@@ -20,9 +20,8 @@ function viewProd($ref = "ref vide",$titre = "Titre vide", $categorie = "Categor
             <h2><?=$titre?></h2>
             <p class="category"><?=$categorie?></p>
             <p>Prix : <?= $prix?></p>
-            <button class="addpanier" ref=<?=$ref?> onclick="ajouter_panier('<?=$ref?>')">Ajouter au panier</button>
+            <button class="addpanier" ref=<?=$ref?> onclick="ajouter_panier('<?=$ref?>|<?=$titre?>|<?=$prix?>')">Ajouter au panier</button>
         </div>
     </div>
 <?php
 }
-

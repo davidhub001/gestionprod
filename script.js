@@ -18,16 +18,22 @@ rubrique.forEach(e => {
 window.addEventListener('click', function (event) {
     var modal2 = document.getElementById('registrationModal2');
     var modal = document.getElementById('registrationModal');
+    var modal3 = document.getElementById('registrationModal3');
     if (event.target === modal) {
         modal.style.display = 'none';
     }
     if (event.target === modal2) {
         modal2.style.display = 'none';
     }
+    if (event.target === modal3) {
+        modal3.style.display = 'none';
+    }
 });
 
 var loginButton= document.getElementById('btnLogin');
 var logoutButton= document.getElementById('btnLogout');
+
+var panier= document.getElementById('contenuPanier');
 var fermer = document.querySelectorAll('.closeModal')
 if(loginButton !== null){
     loginButton.onclick = function(){
@@ -40,18 +46,25 @@ if(logoutButton !== null){
             document.getElementById('registrationModal2').style.display = 'flex';
     }
 }
+
+if(panier !== null){
+    panier.onclick = function(){
+            document.getElementById('registrationModal3').style.display = 'flex';
+    }
+}
 fermer.forEach(e => {
     e.onclick = function(){
         document.getElementById('registrationModal').style.display = 'none';
         document.getElementById('registrationModal2').style.display = 'none';
+        document.getElementById('registrationModal3').style.display = 'none';
     }
 })
 
-function ajouter_panier(ref){
+function ajouter_panier(data){
     var url_site = document.getElementById("urlsite");
     // Données à envoyer au serveur (peut être un objet JavaScript)
     var postData = {
-        ref: ref,
+        data: data,
     };
 
     // Configuration de la requête

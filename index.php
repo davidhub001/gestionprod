@@ -4,7 +4,11 @@ include "view.php";
 include "header.php";
 include "inscription.php";
 include "deconnection.php";
-if(isset($_SESSION["panier"])) $nbpanier = count($_SESSION["panier"]);
+include "contenuPanier.php";
+if(isset($_SESSION["panier"])) {
+    $nbpanier = count($_SESSION["panier"]);
+    $contenu = $_SESSION["panier"];
+}
 else $nbpanier = 0;
 ?>
 <input type="hidden" id="urlsite" value="<?=$_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["HTTP_HOST"]?>">
@@ -24,7 +28,9 @@ else $nbpanier = 0;
             }
         ?>
         <button id="btn<?=$btn?>"><?=$btn?></button>
-        <span id="nbrpanier"><?=$nbpanier?></span>
+        <button id="contenuPanier">
+            <span id="nbrpanier"><?=$nbpanier?></span>
+        </button>
     </nav>
 
     <div class="container">
