@@ -4,13 +4,15 @@ include "view.php";
 include "header.php";
 include "inscription.php";
 include "deconnection.php";
-include "contenuPanier.php";
 if(isset($_SESSION["panier"])) {
     $nbpanier = count($_SESSION["panier"]);
     $contenu = $_SESSION["panier"];
 }
 else $nbpanier = 0;
 ?>
+<div id="registrationModal3" class="modal-overlay">
+    <?php include "contenuPanier.php"; ?>
+</div>
 <input type="hidden" id="urlsite" value="<?=$_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["HTTP_HOST"]?>">
     <header>
         <h1>Vente de Produits</h1>

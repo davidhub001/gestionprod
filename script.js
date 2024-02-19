@@ -49,17 +49,37 @@ if(logoutButton !== null){
 
 if(panier !== null){
     panier.onclick = function(){
+            fetch('contenuPanier.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('La requête a échoué.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Mettez à jour le contenu du div avec la réponse du serveur
+                    document.getElementById('registrationModal3').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Erreur Fetch :', error);
+                });
             document.getElementById('registrationModal3').style.display = 'flex';
     }
 }
 fermer.forEach(e => {
     e.onclick = function(){
-        document.getElementById('registrationModal').style.display = 'none';
-        document.getElementById('registrationModal2').style.display = 'none';
-        document.getElementById('registrationModal3').style.display = 'none';
+        close_btn();
     }
 })
 
+function close_btn(){
+    document.getElementById('registrationModal').style.display = 'none';
+    document.getElementById('registrationModal2').style.display = 'none';
+    document.getElementById('registrationModal3').style.display = 'none';
+}
+function supp_prod(data){
+    console.log(atob(data));
+}
 function ajouter_panier(data){
     var url_site = document.getElementById("urlsite");
     // Données à envoyer au serveur (peut être un objet JavaScript)
