@@ -77,14 +77,49 @@ function close_btn(){
     document.getElementById('registrationModal2').style.display = 'none';
     document.getElementById('registrationModal3').style.display = 'none';
 }
-function supp_prod(data){
-    console.log(atob(data));
+function supp_prod(data, btn){
+    var tr = btn.parentNode.parentNode;
+    tr.remove();
+    var url_site = document.getElementById("urlsite");
+    // Données à envoyer au serveur (peut être un objet JavaScript)
+    var postData = {
+        data: data,
+        options: "supp_prod"
+    };
+
+    // Configuration de la requête
+    var url = url_site.value+"/GestionProd/panier.php";
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Indique que le corps de la requête est au format JSON
+        },
+        body: JSON.stringify(postData) // Convertit l'objet en chaîne JSON
+    };
+
+    // Envoi de la requête Fetch
+    fetch(url, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur réseau ou HTTP, statut ' + response.status);
+            }
+            return response.text(); 
+        })
+        .then(data => {
+            var nbrpanier = document.getElementById("nbrpanier");
+            if(data != 0) nbrpanier.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Erreur lors de la requête Fetch:', error);
+        });
 }
+
 function ajouter_panier(data){
     var url_site = document.getElementById("urlsite");
     // Données à envoyer au serveur (peut être un objet JavaScript)
     var postData = {
         data: data,
+        options: "ajouter_panier"
     };
 
     // Configuration de la requête

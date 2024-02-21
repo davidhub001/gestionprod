@@ -21,11 +21,11 @@ session_start();
                     $data = explode("|",$val);
                     $total += (float)$data[2];
                     ?>
-                    <tr>
+                    <tr data="<?=$val?>">
                         <td><?=$data[0]?></td>
                         <td><?=$data[1]?></td>
                         <td><?=$data[2]?></td>
-                        <td><button onclick="supp_prod('<?php echo base64_encode($val) ?>')"></button></td>
+                        <td><button onclick="supp_prod('<?php echo base64_encode($val) ?>',this)"></button></td>
                     </tr>
                     <?php
                 }

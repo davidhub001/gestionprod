@@ -19,9 +19,9 @@ else $nbpanier = 0;
     </header>
 
     <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Produits</a>
-        <a href="#">Contact</a>
+        <a href="#Accueil">Accueil</a>
+        <a href="#Produits">Produits</a>
+        <a href="#Contact">Contact</a>
         <?php
             if (!isset($_SESSION['nom']) || !isset($_SESSION['email']) || !isset($_SESSION['telephone'])) {
                 $btn = "Login";
